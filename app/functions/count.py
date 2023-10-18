@@ -3,7 +3,7 @@ import json
 
 def lambda_handler(event, context):
     
-    dynamoDB = boto3.resource('dynamodb')
+    dynamoDB = boto3.resource('dynamodb', region_name='us-east-1')
     table = dynamoDB.Table('count-table')
     
     response = table.get_item(
