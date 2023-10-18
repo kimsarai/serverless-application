@@ -7,12 +7,15 @@ import count
 def test_ok ():
 
 
-    res = count.lambda_handler(event = {
-    'queryStringParameters': {
-        'name': 'arai'  
+    event = {
+        'queryStringParameters': {
+            'name': 'arai'
+        }
     }
-    }
-    )
+    context = {}  
+
+    # lambda_handlerを呼び出す
+    res = count.lambda_handler(event, context)
 
     status_code = res['statusCode']
     assert status_code == 200
