@@ -2,20 +2,40 @@ import os
 import sys
 
 sys.path.append(os.environ["REPOSITORY_HOME"] + "/app/functions")
-from unittest.mock import patch
-import count
 
-def test_ok ():
+import unittest.mock
+import count  # count モジュールをインポート
 
-
+def test_ok():
     event = {
         'queryStringParameters': {
             'name': 'arai'
         }
     }
-    context = {}  
+    context = {}
+    
+    # Boto3リソースの get_item メソッドをモック
+    with unittest.mock.patch('boto3.resource') as mock_resource:
+        # モックの DynamoDB.Table インスタンスを作成
+        mock_table = unittest.mock.MagicMock()
+        mock_resource.return_value.Table.return_value = mock_table
 
-    res = count.lambda_handler(event, context)
+        # DynamoDB.Table.get_item メソッドをモック
+        mock_get_item = unittest.mock.MagicMock()
+        # メソッドの戻り値を設定
+        mock_get_item.return_value = {'Item': {'name': 'arai', 'accessNumber': 42}}
+        mock_table.get_item = mock_get_item
 
-    status_code = res['statusCode']
-    assert status_code == 200
+        # テスト対象のコードを実行
+        res = count.lambda_handler(event, context)
+
+    # 期待されるメソッド呼び出しが行われたことをアサート
+    mock_get_item.assert_called_with(Key={'name': 'arai'})
+    mock_table.update_item.assert_called_with(
+        Key={'name': 'arai'},
+        UpdateExpression='set accessNumber = :s',
+        ExpressionAttributeValues={':s': 43}
+    )
+
+    # 他のアサーションを追加
+    assert res == {"statusCode": 200, "body": 43}
