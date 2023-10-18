@@ -27,7 +27,7 @@ jobs:
           pip install -r requirements.txt -q
           export REPOSITORY_HOME=$(pwd)
           cd tests/
-          pytest -v --cov --cov-branch --cov-report=html count.py
+          pytest -v --cov --cov-branch --cov-report=html test_count.py
           cd ${REPOSITORY_HOME}
 
       - name: Setup python
