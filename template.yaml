@@ -1,0 +1,59 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Transform: AWS::Serverless-2016-10-31
+
+Description: apigw + lambda + dynamodb
+
+Globals:
+  Function:
+    Runtime: python3.9
+
+Parameters: 
+  CompanyName:
+    Type: String
+    AllowedValues:
+      - shift
+  ProjectName: 
+    Type: String
+    AllowedValues:
+      - blog
+
+Resources:
+  CountFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub ${CompanyName}-${ProjectName}-count-function
+      Description: Count-Function
+      CodeUri: ./app/functions
+      Handler: count.lambda_handler 
+      Policies:
+        DynamoDBCrudPolicy:
+          TableName: !Ref MyDynamoDBTable:
+      Events:
+        AppMethod:
+          Type: Api
+          Properties:
+            RestApiId: !Ref CountAPI
+            Path: /count
+            Method: GET
+      Tags:
+        Name: !Sub ${CompanyName}-${ProjectName}-count-function
+        CompanyName: !Sub ${CompanyName}
+        ProjectName: !Sub ${ProjectName}
+  MyDynamoDBTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: count-table
+
+  CountAPI:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: !Sub ${CompanyName}-${ProjectName}-count-api
+      Description: Sample-API
+      StageName: stg
+      EndpointConfiguration:
+        Type: REGIONAL
+      Tags:
+        Name: !Sub ${CompanyName}-${ProjectName}-count-api
+        CompanyName: !Sub ${CompanyName}
+        ProjectName: !Sub ${ProjectName}
