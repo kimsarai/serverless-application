@@ -33,22 +33,19 @@ Resources:
         AppMethod:
           Type: Api
           Properties:
-            RestApiId: !Ref CountAPI
+            RestApiId: !Ref Count-Table
             Path: /count
             Method: GET
       Tags:
         Name: !Sub ${CompanyName}-${ProjectName}-count-function
         CompanyName: !Sub ${CompanyName}
         ProjectName: !Sub ${ProjectName}
-  MyDynamoDBTable:
-    Type: AWS::Serverless::SimpleTable
+    Count-Table:
+    Type: AWS::Serverless::Table
     Properties:
-      TableName: count-table
       AttributeDefinitions: 
         - AttributeName: name
           AttributeType: S
-
-
   CountAPI:
     Type: AWS::Serverless::Api
     Properties:
