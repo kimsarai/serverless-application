@@ -1,5 +1,5 @@
 version = 0.1
-[sample.deploy.parameters]
+[count-app.deploy.parameters]
 stack_name = "count-app-stack"
 s3_bucket = "count-lambda-bucket"
 s3_prefix = "count-app-stack"
