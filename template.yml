@@ -28,19 +28,19 @@ Resources:
       Handler: count.lambda_handler 
       Policies:
         DynamoDBCrudPolicy:
-          TableName: !Ref Count-Table
+          TableName: !Ref CountTable
       Events:
         AppMethod:
           Type: Api
           Properties:
-            RestApiId: !Ref Count-Table
+            RestApiId: !GetAtt CountTable.Arn
             Path: /count
             Method: GET
       Tags:
         Name: !Sub ${CompanyName}-${ProjectName}-count-function
         CompanyName: !Sub ${CompanyName}
         ProjectName: !Sub ${ProjectName}
-    Count-Table:
+    CountTable:
     Type: AWS::Serverless::Table
     Properties:
       AttributeDefinitions: 
