@@ -28,7 +28,7 @@ Resources:
       Handler: count.lambda_handler 
       Policies:
         DynamoDBCrudPolicy:
-          TableName: !Ref MyDynamoDBTable
+          TableName: !Ref Count-Table
       Events:
         AppMethod:
           Type: Api
