@@ -33,7 +33,7 @@ Resources:
         AppMethod:
           Type: Api
           Properties:
-            RestApiId: !GetAtt CountTable.Arn
+            RestApiId: !Ref CountAPI
             Path: /count
             Method: GET
       Tags:
@@ -41,11 +41,12 @@ Resources:
         CompanyName: !Sub ${CompanyName}
         ProjectName: !Sub ${ProjectName}
     CountTable:
-    Type: AWS::Serverless::Table
+    Type: AWS::Serverless::SimpleTable
     Properties:
-      AttributeDefinitions: 
-        - AttributeName: name
-          AttributeType: S
+      TableName: count-app-table
+      PrimaryKey:
+        Name: name
+        Type: String
   CountAPI:
     Type: AWS::Serverless::Api
     Properties:
