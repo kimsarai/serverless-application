@@ -4,7 +4,7 @@ import json
 def lambda_handler(event, context):
     
     dynamoDB = boto3.resource('dynamodb')
-    table = dynamoDB.Table('count-table')
+    table = dynamoDB.Table('count-app-table')
     
     
     response = table.get_item(
