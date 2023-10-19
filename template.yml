@@ -41,12 +41,12 @@ Resources:
         CompanyName: !Sub ${CompanyName}
         ProjectName: !Sub ${ProjectName}
     CountTable:
-    Type: AWS::Serverless::SimpleTable
-    Properties:
-      TableName: count-app-table
-      PrimaryKey:
-        Name: name
-        Type: String
+      Type: AWS::Serverless::SimpleTable
+      Properties:
+        TableName: count-app-table
+        PrimaryKey:
+          Name: name
+          Type: String
   CountAPI:
     Type: AWS::Serverless::Api
     Properties:
