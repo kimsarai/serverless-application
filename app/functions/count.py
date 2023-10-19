@@ -3,8 +3,9 @@ import json
 
 def lambda_handler(event, context):
     
-    dynamoDB = boto3.resource('dynamodb', region_name='us-east-1')
+    dynamoDB = boto3.resource('dynamodb')
     table = dynamoDB.Table('count-table')
+    
     
     response = table.get_item(
         Key={
@@ -12,6 +13,14 @@ def lambda_handler(event, context):
         }
     )
     
+    if 'Item' not in response:
+        table.put_item(
+            Item={
+                'name': event['queryStringParameters']['name'],
+                'accessNumber': 1
+            }
+        )
+        return {"statusCode": 200, "body": "1"}
 
     if event['queryStringParameters']['name'] == response['Item']['name']:
 
@@ -24,3 +33,4 @@ def lambda_handler(event, context):
         )
 
         return {"statusCode": 200, "body": int(response['Item']['accessNumber'] + 1)}
+        

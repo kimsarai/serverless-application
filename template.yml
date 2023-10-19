@@ -44,6 +44,10 @@ Resources:
     Type: AWS::Serverless::SimpleTable
     Properties:
       TableName: count-table
+      AttributeDefinitions: 
+        - AttributeName: name
+          AttributeType: S
+
 
   CountAPI:
     Type: AWS::Serverless::Api
