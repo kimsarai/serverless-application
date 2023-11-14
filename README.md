@@ -4,10 +4,9 @@ Github ActionsでAWS SAM テンプレートをテストし、デプロイする 
 
 AWS SAMテンプレートは以下の構成となっています。
 - AWS DynamoDB
+  - 主キーとしてnameを設定
 - AWS Lambda
+  - エンドポイントのURLにパラメータを指定し、DynamoDBに主キーの値があれば、accessNumberが増加。なければ、登録。
 - AWS API GateWay
-
-DynamoDB：主キーとしてnameを設定
-Lambda関数：エンドポイントのURLにパラメータを指定し、DynamoDBに主キーの値があれば、accessNumberが増加。なければ、登録。
-API GateWay：Rest APIを使用
+  - Rest APIを使用
 
