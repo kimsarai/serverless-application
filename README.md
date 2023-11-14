@@ -1,6 +1,6 @@
 # serverless-application
 
-Github ActionsでAWS SAM テンプレートをテストし、デプロイする CI/CD パイプラインを構築します。
+Github ActionsでAWS SAM テンプレートをテストし、デプロイする CI/CDを構築します。
 
 AWS SAMテンプレートは以下の構成となっています。
 - AWS DynamoDB
