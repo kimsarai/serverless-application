@@ -9,6 +9,7 @@ GitHubにコードをプッシュすることでGitHub Actionsが起動し、AWS
   - エンドポイントのURLにパラメータを指定し、DynamoDBに主キーのvalue値があれば、accessNumberが1ずつ増加します。もし、value値がなければ、そのvalue値が登録されます。
 - AWS API GateWay
   - Rest APIを使用しています。
+事前に準備しておくものとして、GithubとAWSを連携させるため、ロールの信頼関係に一意のレポジトリを登録し、workflowsにそのロールを指定します。
 
 ## ファイル構成
 ```
