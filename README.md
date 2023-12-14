@@ -2,7 +2,7 @@
 Github ActionsでAWS SAM テンプレートをテストし、デプロイする CI/CDを構築します。
 
 ## 概要
-AWS SAMテンプレートは次のようになります。
+GitHubにコードをプッシュすることでGitHub Actionsが起動し、AWS SAMでデプロイされます。AWS SAMテンプレートは下記のようになります。
 - AWS DynamoDB
   - 主キーとしてnameを設定しています。
 - AWS Lambda
