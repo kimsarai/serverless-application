@@ -19,7 +19,7 @@ Resources:
     Properties:
       FunctionName: !Sub ${AppName}-count-function
       Description: Count-Function
-      CodeUri: ./app/functions
+      CodeUri: ../app/functions
       Handler: count.lambda_handler 
       Policies:
         DynamoDBCrudPolicy:
