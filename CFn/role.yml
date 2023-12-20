@@ -34,8 +34,7 @@ Resources:
                 token.actions.githubusercontent.com:aud:
                   - "sts.amazonaws.com"
               StringLike:
-                token.actions.githubusercontent.com:sub:
-                  - "repo:${GitHubOrg}/${GitHubRepositoryName}:*"
+                token.actions.githubusercontent.com:sub: !Sub repo:${GitHubOrg}/${GitHubRepositoryName}:*
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/AdministratorAccess"
       RoleName: "aws-identity-providers-github-actions"
