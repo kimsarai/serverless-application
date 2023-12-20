@@ -49,5 +49,5 @@ jobs:
       - name: Build & Deploy Cloudformation stacks
         if: steps.unit-test.outcome == 'success'
         run: |
-          sam build --use-container --config-env ${CONFIG_ENV} --template-file ${TEMPLATE_FILE} --parameter-overrides AppName=serverless-app 
-          sam deploy --config-env ${CONFIG_ENV} --template-file ${TEMPLATE_FILE} --parameter-overrides AppName=serverless-app
+          sam build --use-container --config-env ${CONFIG_ENV} --template-file ${TEMPLATE_FILE} 
+          sam deploy --config-env ${CONFIG_ENV} --template-file ${TEMPLATE_FILE} --stack-name serverless-application-stack

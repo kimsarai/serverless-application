@@ -1,12 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "GitHub Role"
 
-# Parameters:
-#   AppName:
-#     Description: Your App Name
-#     Type: String
-#     Default: serverless-app
-
 Resources:
   GithubOidc:
     Type: AWS::IAM::OIDCProvider
