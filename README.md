@@ -54,3 +54,8 @@ aws cloudformation create-stack \
 ```
 - 指定したブランチにコミットをする
 
+## 参考文献
+
+- [GitHub Actions＋AWS SAM で CI/CD を構築してみた）](https://note.com/shift_tech/n/n1bf843ca0a78)
+- [【AWS SAM ハンズオン】API Gateway+Lambda+DynamoDBを作成。](https://zenn.dev/mjxo/articles/21f0dd659a174d)
+- [GitHub ActionsからOIDCでCredential情報を使わずにAWSと連携](https://qiita.com/ppco/items/a7b9946377ea96bd0e23)
