@@ -27,13 +27,13 @@ https://(API GateWayのエンドポイント)/?name=[パラメータを指定]
 │   ├── template.yml // AWS SAMを定義
 │   ├── samconfig.toml 
 │   └── parameters
-│      └── role-parameters.json
+│       └── role-parameters.json
 ├── .github
 │   └── workflows
 │       └── github-actions.yml  // github actionsを定義
 ├── app
 │   └── functions
-│      └── count.py // Lambda関数の定義
+│       └── count.py // Lambda関数の定義
 └── tests 
     └── test_count.py // Lambdaのテストファイル
 ```
