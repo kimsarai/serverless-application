@@ -9,20 +9,15 @@ Globals:
     Runtime: python3.9
 
 Parameters: 
-  CompanyName:
+  AppName:
+    Description: Your App Name
     Type: String
-    AllowedValues:
-      - shift
-  ProjectName: 
-    Type: String
-    AllowedValues:
-      - blog
 
 Resources:
   CountFunction:
     Type: AWS::Serverless::Function
     Properties:
-      FunctionName: !Sub ${CompanyName}-${ProjectName}-count-function
+      FunctionName: !Sub ${AppName}-count-function
       Description: Count-Function
       CodeUri: ./app/functions
       Handler: count.lambda_handler 
@@ -37,9 +32,8 @@ Resources:
             Path: /count
             Method: GET
       Tags:
-        Name: !Sub ${CompanyName}-${ProjectName}-count-function
-        CompanyName: !Sub ${CompanyName}
-        ProjectName: !Sub ${ProjectName}
+        Name: !Sub ${AppName}-count-function
+
   CountTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
@@ -50,12 +44,11 @@ Resources:
   CountAPI:
     Type: AWS::Serverless::Api
     Properties:
-      Name: !Sub ${CompanyName}-${ProjectName}-count-api
+      Name: !Sub ${AppName}-count-api
       Description: Sample-API
       StageName: stg
       EndpointConfiguration:
         Type: REGIONAL
       Tags:
-        Name: !Sub ${CompanyName}-${ProjectName}-count-api
-        CompanyName: !Sub ${CompanyName}
-        ProjectName: !Sub ${ProjectName}
+        Name: !Sub ${AppName}-count-api
+
