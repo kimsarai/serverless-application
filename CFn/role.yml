@@ -1,12 +1,13 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "GitHub Role"
 
-GitHubOrg:
-  Description: GitHub Owner.
-  Type: String
-GitHubRepositoryName: 
-  Description: GitHub Repository Name.
-  Type: String
+Parameters:
+  GitHubOrg:
+    Description: GitHub Owner.
+    Type: String
+  GitHubRepositoryName: 
+    Description: GitHub Repository Name.
+    Type: String
 
 Resources:
   GithubOidc:
@@ -35,7 +36,6 @@ Resources:
               StringLike:
                 token.actions.githubusercontent.com:sub:
                   - "repo:${GitHubOrg}/${GitHubRepositoryName}:*"
-                  # - "repo:kimsarai/serverless-application:*"
       ManagedPolicyArns:
         - "arn:aws:iam::aws:policy/AdministratorAccess"
       RoleName: "aws-identity-providers-github-actions"

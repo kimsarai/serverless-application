@@ -52,6 +52,7 @@ aws cloudformation create-stack \
 --capabilities CAPABILITY_NAMED_IAM \
 --parameters file://./parameters/パラメータ名 \
 ```
+- AWSのアカウントIDをGitHubの指定したレポジトリ上の[Settings]->[Secrets and variables]->[Actions]にAWS_ACCOUNT_IDをKeyとして登録する
 - 指定したブランチにコミットをする
 
 ## 参考文献
