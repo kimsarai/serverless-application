@@ -1,0 +1,10 @@
+[
+    {
+        "ParameterKey": "GitHubOrg",
+        "ParameterValue": "kimsarai"
+    },
+    {
+        "ParameterKey": "GitHubRepositoryName",
+        "ParameterValue": "serverless-application"
+    }
+]

@@ -52,3 +52,7 @@ Resources:
       Tags:
         Name: !Sub ${AppName}-count-api
 
+Outputs:
+  ApiEndpoint:
+    Description: "API Gateway Endpoint URL"
+    Value: !Sub "https://${CountAPI}.execute-api.${AWS::Region}.amazonaws.com/${CountAPI.StageName}/count"
