@@ -55,4 +55,4 @@ Resources:
 Outputs:
   ApiEndpoint:
     Description: "API Gateway Endpoint URL"
-    Value: !Sub "https://${CountAPI}.execute-api.${AWS::Region}.amazonaws.com/${CountAPI}/count"
+    Value: !Sub "https://${CountAPI}.execute-api.${AWS::Region}.amazonaws.com/Stage/count"
