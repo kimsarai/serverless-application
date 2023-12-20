@@ -25,7 +25,9 @@ https://(API GateWayのエンドポイント)/?name=[パラメータを指定]
 ├── CFn
 │   ├── role.yml // oidc用のロール
 │   ├── template.yml // AWS SAMを定義
-│   └── samconfig.toml // パラメータを定義
+│   ├── samconfig.toml 
+│   └── parameters
+│      └── role-parameters.json
 ├── .github
 │   └── workflows
 │       └── github-actions.yml  // github actionsを定義
