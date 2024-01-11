@@ -37,10 +37,12 @@ Resources:
   CountTable:
     Type: AWS::Serverless::SimpleTable
     Properties:
-      TableName: count-app-table
+      TableName: !Sub ${AppName}-count-table
       PrimaryKey:
         Name: name
         Type: String
+      Tags:
+        Name: !Sub ${AppName}-count-table
   CountAPI:
     Type: AWS::Serverless::Api
     Properties:
