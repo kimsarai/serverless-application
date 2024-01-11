@@ -16,13 +16,10 @@ def test_ok():
     
     # Boto3リソースの get_item メソッドをモック
     with unittest.mock.patch('boto3.resource') as mock_resource:
-        # モックの DynamoDB.Table インスタンスを作成
         mock_table = unittest.mock.MagicMock()
         mock_resource.return_value.Table.return_value = mock_table
 
-        # DynamoDB.Table.get_item メソッドをモック
         mock_get_item = unittest.mock.MagicMock()
-        # メソッドの戻り値を設定
         mock_get_item.return_value = {'Item': {'name': 'arai', 'accessNumber': 42}}
         mock_table.get_item = mock_get_item
 

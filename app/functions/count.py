@@ -1,10 +1,11 @@
 import boto3
-import json
+import os
 
 def lambda_handler(event, context):
     
     dynamoDB = boto3.resource('dynamodb')
-    table = dynamoDB.Table('count-app-table')
+    table_name = os.environ['DYNAMODB_TABLE_NAME']
+    table = dynamoDB.Table(table_name)
     
     
     response = table.get_item(
