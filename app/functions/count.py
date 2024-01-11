@@ -4,8 +4,8 @@ import json
 def lambda_handler(event, context):
     
     dynamoDB = boto3.resource('dynamodb')
-    table_name = event['DYNAMODB_TABLE_NAME']
-    table = dynamoDB.Table(table_name)
+    table = dynamoDB.Table('serverless-app-count-table')
+    
     
     response = table.get_item(
         Key={

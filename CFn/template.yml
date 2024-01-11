@@ -31,9 +31,6 @@ Resources:
             RestApiId: !Ref CountAPI
             Path: /count
             Method: GET
-      Environment:
-        Variables:
-          DYNAMODB_TABLE_NAME: !Ref CountTable
       Tags:
         Name: !Sub ${AppName}-count-function
 
