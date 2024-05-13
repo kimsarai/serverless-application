@@ -1,10 +1,10 @@
 [
     {
         "ParameterKey": "GitHubOrg",
-        "ParameterValue": "[Your github organization]"
+        "ParameterValue": "kimsarai"
     },
     {
         "ParameterKey": "GitHubRepositoryName",
-        "ParameterValue": "[Your github repository]"
+        "ParameterValue": "serveless-application"
     }
 ]
